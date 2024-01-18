@@ -128,5 +128,16 @@ public class SimpleStream {
                 (min, max) -> min.get()+max.get()// Receives the result from those collectors and combines them
         ));
         System.out.println(sum);
+
+        //("bb", "ccc", "dd", "aj", "uiu", "aa", "bb");
+        // == anyMatch
+        boolean is = list.stream()
+                .anyMatch(x -> x.startsWith("b"));
+        System.out.println(is);
+
+        // == allMatch
+        is = list.stream()
+                .allMatch(x -> x.startsWith("b"));
+        System.out.println(is);
     }
 }
