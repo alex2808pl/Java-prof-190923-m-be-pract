@@ -42,7 +42,7 @@ public class SimpleSender {
             }
         };
 
-     // Test testInterface = new Test(); // нельзя создать обїект интерфейса, даже если у него все методы имеют default
+     // Test testInterface = new Test(); // нельзя создать объект интерфейса, даже если у него все методы имеют default
 
         testPolymorph(new Viber());
 
