@@ -67,20 +67,5 @@ public class Client implements Serializable {
         return result;
     }
 
-    @Override
-    public String toString() {
-        return "Client{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", status=" + status +
-                ", createdAt=" + createdAt +
-                ", updateAt=" + updateAt +
-                ", taxCode='" + taxCode + '\'' +
-                ", eMail='" + eMail + '\'' +
-                ", address='" + address + '\'' +
-                ", phone='" + phone + '\'' +
-                ", manager=" + manager +
-                '}';
-    }
+
 }

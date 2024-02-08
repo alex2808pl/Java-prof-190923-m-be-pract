@@ -10,14 +10,12 @@ import java.time.LocalDate;
 @Data
 @AllArgsConstructor
 @Builder
-public class Account implements Serializable {
+public class Transactional implements Serializable {
     private long id;
-    private String name;
+    private String description;
     private String type;
-    private StatusAccount status;
     private LocalDate createdAt;
-    private LocalDate updateAt;
-    private Double balance;
-    private String currencyCode;
-    private Client client;
+    private Double amount;
+    private Account debitAccountId;
+    private Account creditAccountId;
 }
