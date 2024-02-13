@@ -1,4 +1,6 @@
-package de.telran.diplom.pojo;
+package de.telran.diplom.run;
+
+import de.telran.diplom.pojo.*;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -17,7 +19,7 @@ public class SimpleSerialize {
         try (ObjectOutputStream oos = new ObjectOutputStream(
                 Files.newOutputStream(path))) {
 
-            Manager manager =  new Manager(1,"Дуся", "Менеджер",StatusManager.WORK,LocalDate.now(), LocalDate.now());
+            Manager manager =  new Manager(1,"Дуся", "Менеджер", StatusManager.WORK,LocalDate.now(), LocalDate.now());
 
             Client client = new Client(1, "Василий", "Пупкин",StatusManager.WORK,
                     LocalDate.now(), LocalDate.now(), "1234567890", "vasya@gmail.com",

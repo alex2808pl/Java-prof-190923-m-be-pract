@@ -1,21 +1,35 @@
 package de.telran.diplom.pojo;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
+//@JsonIgnoreProperties(ignoreUnknown = true)
 public class Client implements Serializable {
     private long id;
     private String firstName;
     private String lastName;
     private StatusManager status;
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
     private LocalDate createdAt;
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
     private LocalDate updateAt;
     private String taxCode;
     private String eMail;
     private String address;
     private String phone;
     private Manager manager;
+
+    public Client() {
+    }
 
     public Client(long id, String firstName, String lastName, StatusManager status, LocalDate createdAt, LocalDate updateAt, String taxCode, String eMail, String address, String phone, Manager manager) {
         this.id = id;
@@ -67,5 +81,20 @@ public class Client implements Serializable {
         return result;
     }
 
-
+    @Override
+    public String toString() {
+        return "Client{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", status=" + status +
+                ", createdAt=" + createdAt +
+                ", updateAt=" + updateAt +
+                ", taxCode='" + taxCode + '\'' +
+                ", eMail='" + eMail + '\'' +
+                ", address='" + address + '\'' +
+                ", phone='" + phone + '\'' +
+                ", manager=" + manager +
+                '}';
+    }
 }

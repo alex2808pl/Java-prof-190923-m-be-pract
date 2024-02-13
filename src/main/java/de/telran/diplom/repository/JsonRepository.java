@@ -1,8 +1,7 @@
-package de.telran.diplom.pojo;
+package de.telran.diplom.repository;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import de.telran.serialized.jackson.Person;
 import lombok.Getter;
 
 @Getter

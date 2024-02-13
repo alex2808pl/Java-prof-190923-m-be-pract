@@ -1,16 +1,29 @@
 package de.telran.diplom.pojo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
-
+//@JsonIgnoreProperties(ignoreUnknown = true)
 public class Manager implements Serializable {
     private long id;
     private String firstName;
     private String lastName;
     private StatusManager status;
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
     private LocalDate createdAt;
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
     private LocalDate updateAt;
+
+    public Manager() {
+    }
 
     public Manager(long id, String firstName, String lastName, StatusManager status, LocalDate createdAt, LocalDate updateAt) {
         this.id = id;

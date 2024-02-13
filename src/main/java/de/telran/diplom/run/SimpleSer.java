@@ -1,10 +1,15 @@
-package de.telran.diplom.pojo;
+package de.telran.diplom.run;
+
+import com.fasterxml.jackson.databind.JsonMappingException;
+import de.telran.diplom.pojo.*;
+import de.telran.diplom.repository.DataRepository;
+import de.telran.diplom.repository.SerializeTransactionalRepository;
 
 import java.time.LocalDate;
 
-public class SimpleJson {
-    public static void main(String[] args) {
-        Manager manager =  new Manager(1,"Дуся", "Менеджер",StatusManager.WORK, LocalDate.now(), LocalDate.now());
+public class SimpleSer {
+    public static void main(String[] args) throws JsonMappingException {
+        Manager manager =  new Manager(1,"Дуся", "Менеджер", StatusManager.WORK, LocalDate.now(), LocalDate.now());
 
         Client client = new Client(1, "Василий", "Пупкин",StatusManager.WORK,
                 LocalDate.now(), LocalDate.now(), "1234567890", "vasya@gmail.com",
@@ -26,10 +31,13 @@ public class SimpleJson {
                 .creditAccountId(account2)
                 .build();
 
-       DataRepository<Transactional> trRep = new JsonRepository<>();
-       trRep.save(transactional1);
 
-        System.out.println(trRep.getRepositoryStr());
+        DataRepository<Transactional> trRep = new SerializeTransactionalRepository();
+        trRep.save(transactional1);
+
+        Transactional trRead = trRep.read();
+        System.out.println(trRead);
+
 
     }
 }
