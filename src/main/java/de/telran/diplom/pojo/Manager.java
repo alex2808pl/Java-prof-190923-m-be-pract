@@ -75,4 +75,13 @@ public class Manager implements Serializable {
         return Objects.hash(id, firstName, lastName, status, createdAt, updateAt);
 //        return Objects.hash(id);
     }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        if(firstName!=null)
+            this.firstName = firstName;
+    }
 }

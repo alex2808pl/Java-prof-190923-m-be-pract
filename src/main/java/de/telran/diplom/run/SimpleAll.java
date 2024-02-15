@@ -4,10 +4,11 @@ import de.telran.diplom.pojo.*;
 import de.telran.diplom.repository.JsonTransactionalRepository;
 import de.telran.diplom.service.TransactionalService;
 
+import java.io.IOException;
 import java.time.LocalDate;
 
 public class SimpleAll {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         Manager manager =  new Manager(1,"Дуся", "Менеджер", StatusManager.WORK, LocalDate.now(), LocalDate.now());
 

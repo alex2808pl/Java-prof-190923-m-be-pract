@@ -2,7 +2,9 @@ package de.telran.diplom.service;
 
 import de.telran.diplom.pojo.*;
 import de.telran.diplom.repository.DataRepository;
+import lombok.SneakyThrows;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -10,6 +12,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.io.IOException;
 import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -49,10 +52,19 @@ class TransactionalServiceTest {
                 .build();
     }
 
+    @SneakyThrows
     @Test
-    void saveTest() {
+    @DisplayName("Тестируем позитивный сценарий saveTest")
+    void saveTest() {  //позитивный сценарий
         Mockito.when(repository.save(Mockito.any(Transactional.class))).thenReturn(true);
         assertTrue(service.save(testTransactional));
+    }
+
+    @Test
+    void saveTestException() { //негативный сценарий
+        Mockito.when(repository.save(Mockito.any(Transactional.class))).thenReturn(false);
+        assertThrows(IOException.class,
+                () -> service.save(testTransactional));
     }
 
     @Test
