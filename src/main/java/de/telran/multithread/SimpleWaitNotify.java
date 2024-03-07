@@ -1,5 +1,8 @@
 package de.telran.multithread;
 
+import java.util.concurrent.ConcurrentMap;
+import java.util.concurrent.CopyOnWriteArrayList;
+
 public class SimpleWaitNotify {
     public static void main(String[] args) {
         Message msg = new Message("обработать");
